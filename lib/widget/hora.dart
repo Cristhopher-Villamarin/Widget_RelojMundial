@@ -6,13 +6,14 @@ class Hora extends StatelessWidget {
   final String location;
 
   Hora({required this.date, required this.time, required this.location});
+
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Color.fromARGB(98, 100, 93, 93),
-        border: Border.all(color: Color.fromARGB(255, 98, 58, 104), width: 2),
+        border: Border.all(color: Colors.yellow, width: 2), // Borde amarillo
       ),
       child: Column(
         children: [

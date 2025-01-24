@@ -58,15 +58,28 @@ class _Inicio1State extends State<Inicio1> {
     _currentDateTime = tz.TZDateTime.now(location);
   }
 
+  Widget _getIconBasedOnTime() {
+    int hour = int.parse(_currentDateTime.toString().split(' ')[1].split(':')[0]);
+    if (hour >= 6 && hour < 18) {
+      return Icon(Icons.wb_sunny, size: 50, color: Colors.yellow); // Sol
+    } else {
+      return Icon(Icons.nightlight_round, size: 50, color: Colors.white); // Luna
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           Positioned.fill(
-            child: Image.asset(
-              'assets/images/background.jfif',
-              fit: BoxFit.cover,
+            child: Container(
+              width: double.infinity,
+              height: double.infinity,
+              child: Image.asset(
+                'assets/images/vertical.jpg',
+                fit: BoxFit.contain,
+              ),
             ),
           ),
           Center(
@@ -101,6 +114,7 @@ class _Inicio1State extends State<Inicio1> {
                   ),
                 ),
                 SizedBox(height: 40),
+                _getIconBasedOnTime(),
                 Draggable(
                   feedback: Container(
                     width: 200,
@@ -108,10 +122,7 @@ class _Inicio1State extends State<Inicio1> {
                     color: Colors.transparent,
                     child: Hora(
                       date: _currentDateTime.toString().split(' ')[0],
-                      time: _currentDateTime
-                          .toString()
-                          .split(' ')[1]
-                          .split('.')[0],
+                      time: _currentDateTime.toString().split(' ')[1].split('.')[0],
                       location: _Lugar,
                     ),
                   ),
@@ -125,10 +136,7 @@ class _Inicio1State extends State<Inicio1> {
                     height: 250,
                     child: Hora(
                       date: _currentDateTime.toString().split(' ')[0],
-                      time: _currentDateTime
-                          .toString()
-                          .split(' ')[1]
-                          .split('.')[0],
+                      time: _currentDateTime.toString().split(' ')[1].split('.')[0],
                       location: _Lugar,
                     ),
                   ),

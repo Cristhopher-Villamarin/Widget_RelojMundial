@@ -58,9 +58,13 @@ class _InicioState extends State<Inicio> {
       body: Stack(
         children: [
           Positioned.fill(
-            child: Image.asset(
-              'assets/images/background.jfif',
-              fit: BoxFit.cover,
+            child: Container(
+              width: double.infinity, // Establece el tamaño deseado
+              height: double.infinity, // Establece el tamaño deseado
+              child: Image.asset(
+                'assets/images/vertical.jpg',
+                fit: BoxFit.contain, // Ajusta la imagen según lo necesites
+              ),
             ),
           ),
           Center(
@@ -106,10 +110,10 @@ class _InicioState extends State<Inicio> {
                           date: snapshot.data!.date,
                           time: snapshot.data!.time,
                           location:
-                              "${snapshot.data!.countryName} ${snapshot.data!.zoneName}",
+                          "${snapshot.data!.countryName} ${snapshot.data!.zoneName}",
                         ),
                         childWhenDragging:
-                            Container(), // El widget se oculta mientras se arrastra
+                        Container(), // El widget se oculta mientras se arrastra
                         onDraggableCanceled: (velocity, offset) {
                           setState(() {
                             _offset = offset;
@@ -122,7 +126,7 @@ class _InicioState extends State<Inicio> {
                             date: snapshot.data!.date,
                             time: snapshot.data!.time,
                             location:
-                                "${snapshot.data!.countryName} ${snapshot.data!.zoneName}",
+                            "${snapshot.data!.countryName} ${snapshot.data!.zoneName}",
                           ),
                         ),
                       );
