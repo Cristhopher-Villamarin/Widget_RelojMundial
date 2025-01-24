@@ -23,6 +23,7 @@ class _WorldClockWidgetState extends State<WorldClockWidget> {
     _fetchWorldTime();
   }
 
+  // Método para obtener la hora desde el controlador.
   Future<void> _fetchWorldTime() async {
     try {
       final worldTime = await _controller.fetchTime(widget.city);
@@ -34,55 +35,68 @@ class _WorldClockWidgetState extends State<WorldClockWidget> {
       setState(() {
         _isLoading = false;
       });
-      showDialog(
-        context: context,
-        builder: (_) => AlertDialog(
-          title: Text('Error'),
-          content: Text('Failed to fetch time: $e'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text('OK'),
-            ),
-          ],
-        ),
-      );
+      _showErrorDialog(e.toString());
     }
+  }
+
+  // Muestra un diálogo en caso de error.
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text('Error'),
+        content: Text(message),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return _isLoading
-        ? Center(child: CircularProgressIndicator())
+        ? const Center(child: CircularProgressIndicator())
         : _worldTime == null
-        ? Center(child: Text('Failed to load time'))
+        ? const Center(child: Text('Failed to load time'))
         : Card(
-      margin: EdgeInsets.all(16),
+      elevation: 4,
+      margin: const EdgeInsets.all(16),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
               _worldTime!.location,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               _worldTime!.time,
               style: TextStyle(
                 fontSize: 48,
-                color: _worldTime!.isDaytime ? Colors.black : Colors.white,
-                backgroundColor: _worldTime!.isDaytime ? Colors.yellow : Colors.blueGrey,
+                color: _worldTime!.isDaytime
+                    ? Colors.black
+                    : Colors.white,
+                backgroundColor: _worldTime!.isDaytime
+                    ? Colors.yellow
+                    : Colors.blueGrey,
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               'Timezone: ${_worldTime!.timezone}',
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
           ],
         ),

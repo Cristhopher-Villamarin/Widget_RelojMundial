@@ -16,7 +16,41 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const WorldClockWidget(city: 'Etc/GMT'), // Puedes cambiar a otra ciudad.
+      home: const CitySelector(),
+    );
+  }
+}
+
+class CitySelector extends StatelessWidget {
+  const CitySelector({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final cities = [
+      'Etc/GMT',
+      'America/New_York',
+      'Europe/London',
+      'Asia/Tokyo'
+    ];
+
+    return Scaffold(
+      appBar: AppBar(title: const Text('Select a City')),
+      body: ListView.builder(
+        itemCount: cities.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(cities[index]),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => WorldClockWidget(city: cities[index]),
+                ),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }
