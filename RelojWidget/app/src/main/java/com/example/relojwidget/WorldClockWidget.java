@@ -1,12 +1,11 @@
 package com.example.relojwidget;
-import com.example.relojwidget.R;
-import android.app.PendingIntent;
-import android.content.Intent;
+
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
-import android.widget.RemoteViews;
 import android.content.SharedPreferences;
+import android.widget.RemoteViews;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -21,27 +20,8 @@ public class WorldClockWidget extends AppWidgetProvider {
             SharedPreferences prefs = context.getSharedPreferences("WidgetPrefs", Context.MODE_PRIVATE);
             String timeZone = prefs.getString("timeZone_" + appWidgetId, "UTC");
 
-            // Crear RemoteViews para actualizar el widget
-            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
-
-            // Configurar el botón para abrir la actividad de configuración
-            Intent configIntent = new Intent(context, WidgetConfigActivity.class);
-            configIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-            configIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-            PendingIntent configPendingIntent = PendingIntent.getActivity(
-                    context,
-                    appWidgetId,
-                    configIntent,
-                    PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
-            );
-            views.setOnClickPendingIntent(R.id.time_zone_button, configPendingIntent);
-
-            // Actualizar el widget con la hora actual
+            // Actualizar el widget con la hora actual y el país seleccionado
             updateAppWidget(context, appWidgetManager, appWidgetId, timeZone);
-
-            // Enviar la actualización al widget
-            appWidgetManager.updateAppWidget(appWidgetId, views);
         }
     }
 
@@ -54,12 +34,24 @@ public class WorldClockWidget extends AppWidgetProvider {
         sdf.setTimeZone(TimeZone.getTimeZone(timeZone));
         String currentTime = sdf.format(new Date());
 
+        // Extraer el nombre del país desde la zona horaria
+        String country = getCountryFromTimeZone(timeZone);
+
         // Actualizar el texto del TextView en el widget
-        views.setTextViewText(R.id.time_display, currentTime);
+        views.setTextViewText(R.id.time_display, currentTime); // Actualizar la hora
+        views.setTextViewText(R.id.country_display, country); // Actualizar el país
 
         // Actualizar el widget con las nuevas vistas
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
-
+    // Función para obtener el nombre del país desde la zona horaria
+    private static String getCountryFromTimeZone(String timeZone) {
+        // Ejemplo: Para "America/New_York" devuelve "New York, USA"
+        if (timeZone.contains("/")) {
+            String[] parts = timeZone.split("/");
+            return parts[1].replace("_", " ") + ", " + parts[0];
+        }
+        return timeZone;
+    }
 }

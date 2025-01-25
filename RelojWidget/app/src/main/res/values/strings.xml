@@ -2,10 +2,100 @@
     <string name="app_name">Reloj Widget</string>
 
     <string-array name="time_zones">
+        <!-- América -->
         <item>America/New_York</item>
         <item>America/Los_Angeles</item>
+        <item>America/Chicago</item>
+        <item>America/Denver</item>
+        <item>America/Toronto</item>
+        <item>America/Mexico_City</item>
+        <item>America/Argentina/Buenos_Aires</item>
+        <item>America/Sao_Paulo</item>
+        <item>America/Bogota</item>
+        <item>America/Lima</item>
+        <item>America/Santiago</item>
+        <item>America/Caracas</item>
+        <item>America/Anchorage</item>
+        <item>America/Guayaquil</item>
+        <item>America/Montevideo</item>
+
+        <!-- Europa -->
         <item>Europe/London</item>
+        <item>Europe/Paris</item>
+        <item>Europe/Berlin</item>
+        <item>Europe/Madrid</item>
+        <item>Europe/Rome</item>
+        <item>Europe/Athens</item>
+        <item>Europe/Zurich</item>
+        <item>Europe/Amsterdam</item>
+        <item>Europe/Brussels</item>
+        <item>Europe/Dublin</item>
+        <item>Europe/Oslo</item>
+        <item>Europe/Stockholm</item>
+        <item>Europe/Helsinki</item>
+        <item>Europe/Vienna</item>
+        <item>Europe/Lisbon</item>
+        <item>Europe/Warsaw</item>
+        <item>Europe/Prague</item>
+        <item>Europe/Istanbul</item>
+
+        <!-- Asia -->
         <item>Asia/Tokyo</item>
+        <item>Asia/Seoul</item>
+        <item>Asia/Shanghai</item>
+        <item>Asia/Kolkata</item>
+        <item>Asia/Dubai</item>
+        <item>Asia/Singapore</item>
+        <item>Asia/Hong_Kong</item>
+        <item>Asia/Manila</item>
+        <item>Asia/Bangkok</item>
+        <item>Asia/Jakarta</item>
+        <item>Asia/Karachi</item>
+        <item>Asia/Taipei</item>
+        <item>Asia/Kuala_Lumpur</item>
+        <item>Asia/Ho_Chi_Minh</item>
+        <item>Asia/Riyadh</item>
+        <item>Asia/Baghdad</item>
+        <item>Asia/Yerevan</item>
+
+        <!-- África -->
+        <item>Africa/Johannesburg</item>
+        <item>Africa/Cairo</item>
+        <item>Africa/Nairobi</item>
+        <item>Africa/Lagos</item>
+        <item>Africa/Algiers</item>
+        <item>Africa/Accra</item>
+        <item>Africa/Abidjan</item>
+        <item>Africa/Khartoum</item>
+        <item>Africa/Casablanca</item>
+        <item>Africa/Dar_es_Salaam</item>
+        <item>Africa/Tripoli</item>
+        <item>Africa/Tunis</item>
+
+        <!-- Oceanía -->
         <item>Australia/Sydney</item>
+        <item>Australia/Melbourne</item>
+        <item>Australia/Brisbane</item>
+        <item>Australia/Perth</item>
+        <item>Australia/Adelaide</item>
+        <item>Pacific/Auckland</item>
+        <item>Pacific/Fiji</item>
+        <item>Pacific/Tahiti</item>
+        <item>Pacific/Honolulu</item>
+        <item>Pacific/Guam</item>
+        <item>Pacific/Port_Moresby</item>
+        <item>Pacific/Samoa</item>
+
+        <!-- Antártida -->
+        <item>Antarctica/Palmer</item>
+        <item>Antarctica/Rothera</item>
+        <item>Antarctica/DumontDUrville</item>
+        <item>Antarctica/McMurdo</item>
+
+        <!-- Otros -->
+        <item>UTC</item>
+        <item>Etc/GMT+0</item>
+        <item>Etc/GMT-2</item>
+        <item>Etc/GMT-5</item>
     </string-array>
 </resources>
