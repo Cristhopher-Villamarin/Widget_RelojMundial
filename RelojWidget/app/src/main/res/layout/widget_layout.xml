@@ -8,8 +8,20 @@
         android:id="@+id/time_display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="12:00 AM"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="11:23 AM"
         android:textColor="@android:color/white"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/time_zone_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/time_display"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Seleccionar Zona Horaria" />
 </RelativeLayout>
+

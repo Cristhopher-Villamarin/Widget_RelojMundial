@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">RelojWidget</string>
+    <string name="app_name">Reloj Widget</string>
+
+    <string-array name="time_zones">
+        <item>America/New_York</item>
+        <item>America/Los_Angeles</item>
+        <item>Europe/London</item>
+        <item>Asia/Tokyo</item>
+        <item>Australia/Sydney</item>
+    </string-array>
 </resources>
